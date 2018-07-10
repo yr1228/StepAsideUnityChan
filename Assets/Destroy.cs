@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    GameObject mainCamObj;
+
+    // Use this for initialization
+    void Start () {
+
+        //メインカメラの取得
+        mainCamObj = Camera.main.gameObject;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
+
+        //画面外に出たらオブジェクトを破棄する
+        if(transform.position.z< mainCamObj.transform.position.z){
+
+            Destroy(gameObject);
+
+        }
 		
 	}
 
-    private void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-    }
+  
 }
